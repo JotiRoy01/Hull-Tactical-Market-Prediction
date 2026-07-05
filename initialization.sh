@@ -29,7 +29,7 @@ DATA_SUBDIRS=(
 
 # Array of quantitative core components for source code
 SRC_SUBDIRS=(
-    "data"
+    "data_ingestion"
     "preprocessing"
     "features"
     "signals"
@@ -54,7 +54,7 @@ done
 
 # 3. Loop through and create Python package sub-modules
 for src_dir in "${SRC_SUBDIRS[@]}"; do
-    mkdir -p "$BASE_DIR/src/market/$src_dir"
+    mkdir -p "$BASE_DIR/src/markets/$src_dir"
 done
 
 # 4. Generate root structural files without overwriting existing files
