@@ -8,7 +8,8 @@ formatters:
 handlers:
   console:
     class: logging.StreamHandler
-    level: DEBUG
+    # raise console level so normal logging doesn't print to terminal
+    level: CRITICAL
     formatter: json
     stream: ext://sys.stdout
 
@@ -16,14 +17,26 @@ handlers:
     class: logging.handlers.RotatingFileHandler
     level: DEBUG
     formatter: json
-    filename: logs/agentic.log
+    filename: logs/markets.log
+    mode: a
+    encoding: utf-8
+
+  exception_file:
+    class: logging.handlers.RotatingFileHandler
+    level: ERROR
+    formatter: json
+    filename: logs/exception.log
     mode: a
     encoding: utf-8
 
 loggers:
-  agentic:
+  markets:
     level: DEBUG
     handlers: [console, file]
+    propagate: no
+  markets.exception:
+    level: ERROR
+    handlers: [exception_file]
     propagate: no
 
 root:
