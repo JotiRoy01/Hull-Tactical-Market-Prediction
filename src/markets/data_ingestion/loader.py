@@ -4,7 +4,21 @@ import pandas as pd
 
 
 class MarketDataLoader:
-    """Load raw Hull Tactical Market Prediction datasets."""
+    """Load raw Hull Tactical Market Prediction datasets.
+    - methods
+    _validation_file :
+        check path existing or not
+        Is path contain a file?
+        Is file end with .csv
+    _load_csv :
+        load/convert the data into Pandas DataFrame
+    load_train :
+        load only the train data
+    load_test :
+        load only the test data
+    load :
+        load train and test data and return the tuple format
+    """
 
     def __init__(
         self,

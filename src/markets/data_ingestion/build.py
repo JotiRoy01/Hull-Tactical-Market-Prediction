@@ -27,7 +27,13 @@ def load_config() -> dict:
 
 
 def main() -> None:
-    """Load and validate competition data."""
+    """Load and validate competition data.
+    frist collect the train and test path.
+    build the schema of the dataset(data_column, feature_group, train_only_columns, test_only_columns)
+    load and validate the using the MarketDataLoader , MarketDataValidator
+    also load the train and test datda from loader.load() function
+    generated the test report
+    """
 
     config = load_config()
 

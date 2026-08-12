@@ -6,7 +6,8 @@ from .schema import MarketDataSchema
 
 
 class DataValidationError(ValueError):
-    """Raised when the dataset violates the expected schema."""
+    """Raised when the dataset violates the expected schema.
+    """
 
 
 @dataclass(frozen=True)
@@ -21,7 +22,43 @@ class ValidationReport:
 
 
 class MarketDataValidator:
-    """Validate raw train and test datasets."""
+    """Validate raw train and test datasets.
+    _validate_expected_columns :
+        take the pandas DataFrame, expected_column: set[str], dataset_name: str
+        first collect the total numeber of column
+        calcualte the missing columns
+        calculate the unexpected column
+    _validate_duplicate_columns :
+        take the pandas DataFrame
+        dataset_name: str
+        check the duplicate columns
+    _validate_date_columns :
+        take the pandas DataFrame, dataset_name
+        check whether exist any missing columns
+        Is any null value
+        Is numeric dtype
+        check dataset is unique or not
+        sort the datetime value
+    _validate_features :
+        take the pandas DataFrame, dataset_name
+        check missing feature
+        check non numeric
+        If required fill the missing value
+    _validate_train_specific_columns :
+        take the DataFrame
+        avoid the test_only_column from the schema
+        check whether exist any unexpected_test_columns columns
+        check the train the value numeric or not
+    _validate_test_specific_columns :
+        take the pandas DataFrame
+        avoid the train dataset
+    _build_report :
+        take pandas DataFrame
+        take dataset_name
+        return the validationReport(dataset_name, row, columns, feature, missing_values)
+
+        
+    """
 
     def __init__(
         self,

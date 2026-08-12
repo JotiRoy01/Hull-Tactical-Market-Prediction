@@ -11,7 +11,20 @@ _FEATURE_PATTERN = re.compile(
 
 @dataclass(frozen=True)
 class MarketDataSchema:
-    """Expected structural schema of the competition dataset."""
+    """Expected structural schema of the competition dataset.
+    feature_columns :
+        The dataset contain same column name in multiple time. so this function count the group and collect them
+    n_feature :
+        it return the total number of column from feature_columns return columns name
+    train_columns :
+        it return all the feature whose should be trained in model traing
+    test_columns :
+        it return all the feature whose should be trained in model testing
+    get_feature_groups :
+        it define the group name and the index number in this order
+        group D index 1
+        
+    """
 
     date_column: str
     feature_groups: dict[str, int]
@@ -31,7 +44,8 @@ class MarketDataSchema:
                 columns.append(
                     f"{group}{index}"
                 )
-
+                print(f"group {group} index {index}")
+        print(f"columns {columns}")
         return tuple(columns)
 
     @property
@@ -99,7 +113,7 @@ class MarketDataSchema:
                     ).group("number")
                 )
             )
-
+        #print(f"goupe {group}")
         return groups
 
     def build_from_config(

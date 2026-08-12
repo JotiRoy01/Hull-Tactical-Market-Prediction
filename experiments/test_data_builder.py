@@ -25,9 +25,15 @@ if str(PROJECT_ROOT) not in sys.path:
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
-from src.markets.data.loader import MarketDataLoader
-from src.markets.data.schema import MarketDataSchema
-from src.markets.data.validator import MarketDataValidator
+try:
+    from src.markets.data_ingestion.loader import MarketDataLoader
+    from src.markets.data_ingestion.schema import MarketDataSchema
+    from src.markets.data_ingestion.validator import MarketDataValidator
+except ModuleNotFoundError:
+    # Fallback for older package layouts if the repo structure changes.
+    from src.markets.data.loader import MarketDataLoader
+    from src.markets.data.schema import MarketDataSchema
+    from src.markets.data.validator import MarketDataValidator
 
 
 def load_config() -> dict:
