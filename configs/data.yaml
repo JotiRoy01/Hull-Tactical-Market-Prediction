@@ -1,0 +1,33 @@
+data:
+  train_path: data/raw/train.csv
+  test_path: data/raw/test.csv
+
+schema:
+  date_column: date_id
+
+  feature_groups:
+    D: 9
+    E: 20
+    I: 9
+    M: 18
+    P: 13
+    S: 12
+    V: 13
+
+  train_only_columns:
+    - forward_returns
+    - risk_free_rate
+    - market_forward_excess_returns
+
+  test_only_columns:
+    - is_scored
+    - lagged_forward_returns
+    - lagged_risk_free_rate
+    - lagged_market_forward_excess_returns
+
+validation:
+  require_non_empty: true
+  require_unique_dates: true
+  require_sorted_dates: true
+  require_numeric_features: true
+  allow_missing_feature_values: true
