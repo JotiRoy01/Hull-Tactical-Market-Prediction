@@ -218,3 +218,12 @@ __marimo__/
 .streamlit/secrets.toml
 market/
 data/
+reports/analysis/correlations.csv
+reports/analysis/dataset_summary.json
+reports/analysis/distribution.csv
+reports/analysis/feature_correlation_matrix.csv
+reports/analysis/missingness_by_group.csv
+reports/analysis/missingness_over_time.csv
+reports/analysis/missingness.csv
+reports/analysis/target_analysis.json
+reports/analysis/target_relationships.csv
